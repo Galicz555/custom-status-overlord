@@ -13,8 +13,8 @@ func TestServeHTTP(t *testing.T) {
 	assert := assert.New(t)
 	plugin := Plugin{}
 	w := httptest.NewRecorder()
-	r := httptest.NewRequest(http.MethodGet, "/api/v1/hello", nil)
-	r.Header.Set("Mattermost-User-ID", "test-user-id")
+	r := httptest.NewRequest(http.MethodGet, "/api/v1/hello?Mattermost-User-ID=23123", nil)
+	r.URL.Query().Get("Mattermost-User-ID")
 
 	plugin.ServeHTTP(nil, w, r)
 
